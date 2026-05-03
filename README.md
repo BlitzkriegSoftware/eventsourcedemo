@@ -1,6 +1,28 @@
 # event source demo
 
-A Demo of Event Sourcing in Http
+A Demo of Event Sourcing in Http and Python
+
+## Server
+
+A simple server in FastAPI (main.py)
+
+```powershell
+# .\start-server.ps1
+uv run fastapi dev --port 8080
+```
+
+## Client
+
+In another terminal session
+
+```powershell
+# Curl test (.\start-curl-client.ps1)
+curl http://localhost:8080/stream
+
+# In a web page
+# Open in a browser "index.html"
+# (.\start-page-client.ps1)
+```
 
 ## References
 

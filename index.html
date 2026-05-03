@@ -65,28 +65,20 @@
     <script>
       var serverURL = "http://localhost:8080/stream";
       window.addEventListener("load", (event) => {
+        // Populate URL in UI
         const element = document.getElementById("URLSVR");
         element.textContent = serverURL;
-      });
-      const x = document.getElementById("RESULT");
-      if (typeof EventSource !== "undefined") {
-        var source = new EventSource(serverURL);
-        source.onmessage = function (event) {
-          x.innerHTML += event.data + "<br>";
-        };
-      } else {
-        x.innerHTML = "Sorry, no support for server-sent events.";
-      }
-      async function copyTextToClipboard(textToCopy) {
-        try {
-          textToCopy = textToCopy.trim();
-          await navigator.clipboard.writeText(textToCopy);
-          console.info("Path copied to clipboard: ", textToCopy);
-        } catch (err) {
-          // Handle potential errors, such as permission issues
-          console.error("Failed to copy text: ", err);
+        // Setup Event Source Listening
+        const x = document.getElementById("RESULT");
+        if (typeof EventSource !== "undefined") {
+          var source = new EventSource(serverURL);
+          source.onmessage = function (event) {
+            x.innerHTML += event.data + "<br>";
+          };
+        } else {
+          x.innerHTML = "Sorry, no support for server-sent events.";
         }
-      }
+      });
     </script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
