@@ -26,4 +26,5 @@ async def event_generator():
 # Endpoint (get)
 @app.get("/stream")
 async def stream():
+    # Keep Alive & No-Cache are Inferred
     return StreamingResponse(event_generator(), media_type="text/event-stream")
